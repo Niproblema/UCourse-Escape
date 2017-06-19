@@ -23,20 +23,27 @@ protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
 
-	void OpenDoor();
+	void OperateDoor(float);
 
 public:
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
 private:
-	UPROPERTY(VisibleAnywhere)
+	UPROPERTY(EditAnywhere)
 		float OpenAngle = -120.f;
+	UPROPERTY(EditAnywhere)
+		float ClosedAngle = -50.f;
 
 	UPROPERTY(EditAnywhere)
 		ATriggerVolume * PressurePlate;
 
-	//UPROPERTY(EditAnywhere)
-		AActor * TriggeringActor;//Pawn inhgerits from actor
+	AActor * TriggeringActor;//Pawn inhgerits from actor
+	float LastDoorOpen;
+	AActor * Owner;
+
+	UPROPERTY(EditAnywhere)
+		float DoorCloseDelay = 0.5f;
+
 
 };
