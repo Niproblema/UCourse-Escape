@@ -10,3 +10,5 @@ Escape/Content/StarterContent/HDRI
 #VS Generated Files#
 *.VC.db
 *.suo
+*.VC.opendb
+*.sln

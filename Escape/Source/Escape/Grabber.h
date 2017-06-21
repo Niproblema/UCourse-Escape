@@ -21,17 +21,28 @@ protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
 
+
+
 public:	
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
-
 private:
 	//Reach of Grabb!
-	float GrabReach = 100.f;
+	float GrabReach = 150.f;
 	UPhysicsHandleComponent * PhysicsHandle = nullptr;
 	UInputComponent * InputComponent = nullptr;
 	
-	
-	//Ray-Cast and grab what's in reach
+	//Find attached physics
+	void FindPhysicsHandleComponent();
+	//Setup attached InputComponent
+	void SetupInputComponent();
+	//Ray-Cast and grab/release what's in reach
 	void Grab();
+	void Release();
+
+	//Return hit for first physicsBody in reach
+	FHitResult GetFirstPB() const;
+	//Get ReachLine
+	FVector GetReachLineStart() const;
+	FVector GetReachLineEnd() const;
 };
